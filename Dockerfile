@@ -14,10 +14,12 @@ RUN apt update -y && add-apt-repository -y ppa:git-core/ppa && apt update -y && 
 USER camenduru
 
 RUN pip install -q opencv-python imageio imageio-ffmpeg ffmpeg-python av runpod \
-    transformers==4.39.2 diffusers==0.27.2 accelerate==0.28.0 omegaconf munch pydub phonemizer einops einops-exts git+https://github.com/resemble-ai/monotonic_align.git nltk librosa matplotlib && \
+    transformers==4.39.2 diffusers==0.27.2 accelerate==0.28.0 omegaconf munch pydub phonemizer einops einops-exts git+https://github.com/resemble-ai/monotonic_align.git nltk==3.8 librosa matplotlib && \
 	GIT_LFS_SKIP_SMUDGE=1 git clone https://github.com/yl4579/StyleTTS2 /content/tost-tts && \
-	aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/TostAI/tost-tts/resolve/main/tost-tts-base-v1.3.pth -d /content/tost-tts/Models/LJSpeech -o epoch_2nd_00030.pth && \
-	aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/tost-ai/Tost-TTS/raw/main/config_ft.yml -d /content/tost-tts/Models/LJSpeech -o config_ft.yml
+	# aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/TostAI/tost-tts/resolve/main/tost-tts-base-v1.3.pth -d /content/tost-tts/Models/LJSpeech -o epoch_2nd_00030.pth && \
+	# aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/tost-ai/Tost-TTS/raw/main/config_ft.yml -d /content/tost-tts/Models/LJSpeech -o config_ft.yml
+    aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/camenduru/bucilianus-1/resolve/main/epoch_2nd_00030.pth -d /content/tost-tts/Models/LJSpeech -o epoch_2nd_00030.pth && \
+    aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/camenduru/bucilianus-1/raw/main/config.yml -d /content/tost-tts/Models/LJSpeech -o config_ft.yml
 
 COPY ./worker_runpod.py /content/tost-tts/worker_runpod.py
 WORKDIR /content/tost-tts
