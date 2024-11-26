@@ -1,0 +1,67 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema#",
+  "type": "object",
+  "properties": {
+    "readme": {
+      "type": "string",
+      "title": "StyleTTS 2: Towards Human-Level Text-to-Speech through Style Diffusion and Adversarial Training with Large Speech Language Models",
+      "author": "Yinghao Aaron Li, Cong Han, Vinay S. Raghavan, Gavin Mischler, Nima Mesgarani",
+      "code": "https://github.com/yl4579/StyleTTS2",
+      "paper": "https://arxiv.org/abs/2306.07691",
+      "page": "https://styletts2.github.io/",
+      "jupyter": "https://github.com/camenduru/styletts-colab",
+      "api": "https://github.com/camenduru/tost-api-examples/blob/main/v1/style-tts.ipynb",
+      "tags": [
+        "Text to Audio"
+      ],
+      "widget": "readme"
+    },
+    "prompt": {
+      "type": "string",
+      "description": "Text",
+      "widget": "textarea"
+    },
+    "upload1": {
+      "type": "string",
+      "widget": "upload",
+      "upload_url": "https://litterbox.catbox.moe/resources/internals/api.php",
+      "property": "wav_input_url"
+    },
+    "wav_input_url": {
+      "type": "string",
+      "description": "WAV Input URL for Voice Cloning",
+      "widget": "textarea"
+    },
+    "alpha": {
+      "type": "number",
+      "description": "TTS Alpha"
+    },
+    "beta": {
+      "type": "number",
+      "description": "TTS Beta"
+    },
+    "diffusion_steps": {
+      "type": "integer",
+      "description": "TTS Diffusion Steps"
+    },
+    "embedding_scale": {
+      "type": "integer",
+      "description": "TTS Embedding Scale"
+    },
+    "example": {
+      "type": "string",
+      "image1": "https://fakeimg.pl/512x512/282828/eae0d0/?text=input#.png",
+      "image2": "https://fakeimg.pl/512x512/282828/eae0d0/?text=txt#.png",
+      "image3": "https://fakeimg.pl/512x512/282828/eae0d0/?text=output#.png",
+      "image4": "https://fakeimg.pl/512x512/282828/eae0d0/?text=wav#.png",
+      "video_aspect_ratio": "143%",
+      "widget": "example"
+    }
+  },
+  "buttons": [
+    {
+      "id": "enter",
+      "label": "🥪 Enter"
+    }
+  ]
+}
